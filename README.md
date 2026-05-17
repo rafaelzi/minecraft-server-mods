@@ -60,7 +60,7 @@ services:
     image: rafaelzii/minecraft-server-mods:java17
     container_name: meu-servidor
     ports:
-      - "25585:25565"
+      - "43565:25565"
     environment:
       VERSION: "1.20.1"
       TYPE: "FABRIC"
@@ -85,26 +85,26 @@ docker compose up -d
 docker compose logs -f  # acompanhar inicialização
 ```
 
-Players conectam com: `seudominio.duckdns.org:25585`
+Players conectam com: `seudominio.duckdns.org:43565`
 
 ## Boa prática: porta não-padrão
 
 A porta `25565` é varrida automaticamente por scanners de Minecraft (Shodan, bots de listas de servidores). Isso acorda o servidor via knockd a cada poucos minutos mesmo sem nenhum jogador.
 
-Usar uma porta não-padrão (ex: `25585`) elimina esse problema sem nenhum custo — players apenas adicionam `:25585` ao endereço.
+Usar uma porta não-padrão (ex: `43565`) elimina esse problema sem nenhum custo — players apenas adicionam `:43565` ao endereço.
 
 **Três camadas para liberar a nova porta (OCI):**
 
 ```bash
-# 1. OCI Console: Networking → VCN → Security Lists → adicionar TCP 25585, remover 25565
+# 1. OCI Console: Networking → VCN → Security Lists → adicionar TCP 43565, remover 25565
 
 # 2. Firewall do Oracle Linux
-sudo firewall-cmd --permanent --add-port=25585/tcp
+sudo firewall-cmd --permanent --add-port=43565/tcp
 sudo firewall-cmd --permanent --remove-port=25565/tcp
 sudo firewall-cmd --permanent --remove-port=25565/udp
 sudo firewall-cmd --reload
 
-# 3. docker-compose.yml: ports: "25585:25565"
+# 3. docker-compose.yml: ports: "43565:25565"
 ```
 
 ## Tags disponíveis

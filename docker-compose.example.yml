@@ -4,8 +4,8 @@ services:
     container_name: meu-servidor
     ports:
       # Porta externa não-padrão → evita scanners automáticos de Minecraft (porta 25565)
-      # Players conectam com: seudominio.duckdns.org:25585
-      - "25585:25565"
+      # Players conectam com: seudominio.duckdns.org:43565
+      - "43565:25565"
     environment:
       # --- OBRIGATÓRIOS ---
       VERSION: "1.20.1"                                    # versão do Minecraft
