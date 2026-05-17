@@ -1,0 +1,27 @@
+services:
+  mc:
+    image: rafaelzii/minecraft-server-mods:java17
+    container_name: meu-servidor
+    ports:
+      # Porta externa não-padrão → evita scanners automáticos de Minecraft (porta 25565)
+      # Players conectam com: seudominio.duckdns.org:25585
+      - "25585:25565"
+    environment:
+      # --- OBRIGATÓRIOS ---
+      VERSION: "1.20.1"                                    # versão do Minecraft
+      TYPE: "FABRIC"                                       # FABRIC | FORGE | QUILT | VANILLA
+      GENERIC_PACK: "/packs/nome-do-seu-modpack.zip"      # caminho dentro do container
+      MEMORY: "8G"                                         # RAM para a JVM
+
+      # --- OPCIONAIS (já têm default na imagem) ---
+      # ENABLE_WHITELIST: "TRUE"
+      # WHITELIST: "jogador1,jogador2"
+      # TZ: "America/Sao_Paulo"
+      # DEBUG_AUTOPAUSE: "FALSE"    # mude para TRUE para diagnosticar problemas
+
+    volumes:
+      - ./minecraft-data:/data      # mundo, configs, mods instalados
+      - ./packs:/packs              # coloque o .zip do modpack aqui
+    restart: unless-stopped
+    healthcheck:
+      disable: true
