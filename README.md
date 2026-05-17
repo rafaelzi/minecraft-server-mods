@@ -1,6 +1,12 @@
 # minecraft-server-mods
 
+[![Docker Hub](https://img.shields.io/docker/pulls/rafaelzii/minecraft-server-mods?label=Docker%20Hub&logo=docker)](https://hub.docker.com/r/rafaelzii/minecraft-server-mods)
+[![GitHub](https://img.shields.io/badge/GitHub-rafaelzi%2Fminecraft--server--mods-181717?logo=github)](https://github.com/rafaelzi/minecraft-server-mods)
+
 Imagem Docker customizada para servidores Minecraft modded, baseada em [`itzg/minecraft-server`](https://github.com/itzg/docker-minecraft-server).
+
+> **Docker Hub:** https://hub.docker.com/r/rafaelzii/minecraft-server-mods  
+> **Código-fonte:** https://github.com/rafaelzi/minecraft-server-mods
 
 Resolve um bug crítico do autopause em servidores sobrecarregados (muitos mods) e inclui boas práticas de segurança para servidores expostos na internet.
 
